@@ -29,10 +29,6 @@ def pick_survey():
 
     survey_id = request.form['survey_code']
 
-    # don't let them re-take a survey until cookie times out
-    if request.cookies.get(f"completed_{survey_id}"):
-        return render_template("already-done.html")
-
     survey = surveys[survey_id]
     session[CURRENT_SURVEY] = survey_id
 
