@@ -34,7 +34,7 @@ def pick_survey():
         return render_template("already-done.html")
 
     survey = surveys[survey_id]
-    session[CURRENT_SURVEY_KEY] = survey_id
+    session[CURRENT_SURVEY] = survey_id
 
     return render_template("survey_start.html",
                            survey=survey)
@@ -73,7 +73,7 @@ def handle_question():
         return redirect(f"/questions/{len(responses)}")
 
 
-@app.route("/questions/<int:qid>")
+@app.route("/questions/<int:qno>")
 def show_question(qno):
     """Display current question."""
 
